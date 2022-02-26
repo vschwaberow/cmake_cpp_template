@@ -1,0 +1,20 @@
+project(prj)
+cmake_minimum_required(VERSION 3.4)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(CONAN_INSTALL_CMD "conan install")
+MESSAGE("COMMAND: ${CONAN_INSTALL_CMD} ${CMAKE_CURRENT_SOURCE_DIR}")
+execute_process(COMMAND bash -c "${CONAN_INSTALL_CMD} ${CMAKE_CURRENT_SOURCE_DIR}"
+   RESULT_VARIABLE CMD_ERROR)
+
+MESSAGE( STATUS "CMD_ERROR:" ${CMD_ERROR})
+message("CMAKE_BINARY_DIR is ${CMAKE_BINARY_DIR}")
+message("CMAKE_CURRENT_BINARY_DIR is ${CMAKE_CURRENT_BINARY_DIR}")
+include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+# file(GLOB_RECURSE COMPRESSION_CPP ${CMAKE_CURRENT_SOURCE_DIR}/compression/*.cpp)
+set(SOURCE_FILES main.cpp)
+add_executable(prj ${SOURCE_FILES})
+target_link_libraries(prj ${CONAN_LIBS})

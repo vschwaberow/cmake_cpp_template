@@ -1,0 +1,14 @@
+{
+      "configurations": [
+    {
+        "name": "MacOS",
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64",
+            "includePath": ["${workspaceFolder}/**", "~/.conan/data/**"], 
+    }
+    ],
+    "version": 4
+}
